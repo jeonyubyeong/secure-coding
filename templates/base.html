@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Tiny Market{% endblock %}</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <!-- Navigation -->
+  <nav class="bg-white border-b border-gray-200 px-6 py-4 flex justify-between items-center shadow-sm">
+    <div class="flex items-center space-x-2">
+      <img src="https://cdn-icons-png.flaticon.com/512/3081/3081559.png" alt="Tiny Market" class="w-6 h-6">
+      <span class="text-xl font-semibold">Tiny Market</span>
+    </div>
+    <div class="space-x-6 text-sm font-medium">
+      {% if session.get('user_id') %}
+        <a href="{{ url_for('dashboard') }}" class="hover:text-blue-500 transition">📊 대시보드</a>
+        <a href="{{ url_for('product_list') }}" class="hover:text-blue-500 transition">🛒 상품 보기</a>
+        <a href="{{ url_for('profile') }}" class="hover:text-blue-500 transition">👤 프로필</a>
+        <a href="{{ url_for('global_chat') }}" class="hover:text-blue-500 transition">🌐 전체 채팅</a>
+        <a href="{{ url_for('report') }}" class="hover:text-blue-500 transition">🚨 신고하기</a>
+        <a href="{{ url_for('logout') }}" class="hover:text-red-500 transition">🚪 로그아웃</a>
+
+      {% else %}
+        <a href="{{ url_for('login') }}" class="hover:text-blue-500 transition">🔑 로그인</a>
+        <a href="{{ url_for('register') }}" class="hover:text-blue-500 transition">📝 회원가입</a>
+      {% endif %}
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <div class="max-w-3xl mx-auto my-10 bg-white p-8 rounded-lg shadow">
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+          {% for message in messages %}
+            <li class="bg-yellow-100 border border-yellow-400 text-yellow-800 px-4 py-2 mb-4 rounded">
+              {{ message }}
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+  </div>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

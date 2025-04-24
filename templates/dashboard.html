@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}내 대시보드 - Tiny Market{% endblock %}
+
+{% block content %}
+  <h2 class="text-2xl font-bold mb-6">👋 안녕하세요, {{ session.get('username') }}님!</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+    <!-- 내 정보 카드 -->
+    <div class="p-6 bg-white border rounded-lg shadow hover:shadow-md transition">
+      <div class="flex items-center space-x-3 mb-2">
+        <img src="https://cdn-icons-png.flaticon.com/512/747/747376.png" class="w-6 h-6" alt="프로필">
+        <h3 class="text-lg font-semibold">내 정보</h3>
+      </div>
+      <p class="text-sm text-gray-600">아이디: {{ session.get('username') }}</p>
+      <p class="text-sm text-gray-600">가입일: {{ join_date or 'N/A' }}</p>
+    </div>
+
+    <!-- 상품 현황 카드 -->
+    <div class="p-6 bg-white border rounded-lg shadow hover:shadow-md transition">
+      <div class="flex items-center space-x-3 mb-2">
+        <img src="https://cdn-icons-png.flaticon.com/512/1040/1040230.png" class="w-6 h-6" alt="상품">
+        <h3 class="text-lg font-semibold">내 상품</h3>
+      </div>
+      <p class="text-sm text-gray-600">등록한 상품 수: {{ product_count or 0 }}개</p>
+      <a href="{{ url_for('new_product') }}" class="text-blue-600 hover:underline text-sm">상품 등록 바로가기</a>
+    </div>
+
+    <!-- 채팅 카드 -->
+    <div class="p-6 bg-white border rounded-lg shadow hover:shadow-md transition">
+      <div class="flex items-center space-x-3 mb-2">
+        <img src="https://cdn-icons-png.flaticon.com/512/1380/1380338.png" class="w-6 h-6" alt="채팅">
+        <h3 class="text-lg font-semibold">최근 채팅</h3>
+      </div>
+      <p class="text-sm text-gray-600">진행 중인 채팅: {{ chat_count or 0 }}건</p>
+      <a href="{{ url_for('chat') }}" class="text-blue-600 hover:underline text-sm">채팅방 열기</a>
+    </div>
+
+  </div>
+{% endblock %}

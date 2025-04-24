@@ -1,0 +1,14 @@
+name: secure_coding
+channels:
+  - defaults
+dependencies:
+  - python=3.9
+  - pip
+  - pip:
+      - flask
+      - flask-socketio
+      - flask-sqlalchemy
+      - python-socketio         # Flask-SocketIO가 의존함 (명시 추천)
+      - eventlet                # 실시간 기능 안정화용 (Flask-SocketIO에 필요)
+      - jinja2                  # 템플릿 엔진 (Flask에 이미 있지만 명시해도 좋음)
+      - werkzeug               # URL routing 등에서 쓰임

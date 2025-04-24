@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}내 프로필 - Tiny Market{% endblock %}
+
+{% block content %}
+  <div class="max-w-xl mx-auto">
+    <h2 class="text-2xl font-bold mb-6">👤 내 프로필</h2>
+
+    <div class="mb-6 bg-white p-4 border rounded-lg shadow-sm">
+      <p class="text-gray-600"><strong>아이디:</strong> {{ user.username }}</p>
+    </div>
+
+    <form method="POST" class="space-y-6">
+      <!-- 소개글 영역 -->
+      <div>
+        <label for="bio" class="block text-sm font-medium text-gray-700">소개 (자기소개 / 하고 싶은 말)</label>
+        <textarea id="bio" name="bio" rows="4"
+                  class="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-blue-500">{{ user.bio }}</textarea>
+      </div>
+
+      <!-- 비밀번호 변경 영역 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label for="current_password" class="block text-sm font-medium text-gray-700">현재 비밀번호</label>
+          <input type="password" id="current_password" name="current_password"
+                 class="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-blue-500">
+        </div>
+
+        <div>
+          <label for="new_password" class="block text-sm font-medium text-gray-700">새 비밀번호</label>
+          <input type="password" id="new_password" name="new_password"
+                 class="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-blue-500">
+        </div>
+      </div>
+
+      <!-- 버튼 -->
+      <button type="submit"
+              class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-md transition">
+        변경사항 저장
+      </button>
+    </form>
+  </div>
+{% endblock %}

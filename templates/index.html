@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Tiny Market - 중고 거래의 시작{% endblock %}
+
+{% block content %}
+  <!-- Hero Section -->
+  <section class="text-center mb-12">
+    <h1 class="text-4xl font-bold mb-4">믿고 거래하는 <span class="text-blue-600">Tiny Market</span></h1>
+    <p class="text-lg text-gray-600 mb-6">동네 중고거래부터 1:1 채팅까지, 간편하게 시작해보세요!</p>
+    <a href="{{ url_for('register') }}" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-semibold transition">
+      지금 시작하기
+    </a>
+  </section>
+
+  <!-- Features Section -->
+  <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="p-6 border rounded-lg shadow hover:shadow-md transition">
+      <img src="https://cdn-icons-png.flaticon.com/512/1040/1040230.png" class="w-12 h-12 mb-3" alt="상품 등록">
+      <h3 class="font-bold text-lg mb-2">상품 등록</h3>
+      <p class="text-sm text-gray-600">직접 찍은 사진으로 중고 상품을 올려보세요. 빠르게 판매할 수 있어요!</p>
+    </div>
+    <div class="p-6 border rounded-lg shadow hover:shadow-md transition">
+      <img src="https://cdn-icons-png.flaticon.com/512/1785/1785339.png" class="w-12 h-12 mb-3" alt="실시간 채팅">
+      <h3 class="font-bold text-lg mb-2">실시간 채팅</h3>
+      <p class="text-sm text-gray-600">구매 전 궁금한 점은 바로 채팅으로 물어보세요.</p>
+    </div>
+    <div class="p-6 border rounded-lg shadow hover:shadow-md transition">
+      <img src="https://cdn-icons-png.flaticon.com/512/190/190411.png" class="w-12 h-12 mb-3" alt="신고 기능">
+      <h3 class="font-bold text-lg mb-2">신고/차단</h3>
+      <p class="text-sm text-gray-600">불량 사용자나 의심스러운 거래는 신고로 안전하게 차단하세요.</p>
+    </div>
+  </section>
+{% endblock %}
